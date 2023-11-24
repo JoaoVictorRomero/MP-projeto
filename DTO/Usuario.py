@@ -1,5 +1,5 @@
 class Usuario():
-    def __init__(self, id_usuario: int, nome_usuario: str, funcao: str, login: str, senha: str):
+    def __init__(self, id_usuario, nome_usuario, funcao, login, senha):
         self.id_usuario = id_usuario
         self.nome_usuario = nome_usuario
         self.funcao = funcao
@@ -38,9 +38,3 @@ class Usuario():
 
     def __str__(self):
         return f'ID Usuário: {self.id_usuario}\nNome: {self.nome_usuario}\nFunção: {self.funcao}\nLogin: {self.login}\n'
-
-    
-
-usuario = Usuario(1, 'Marcelo Vitor', 'Admin', 'marcelovitor@gmail.com', '123')
-
-print(usuario)

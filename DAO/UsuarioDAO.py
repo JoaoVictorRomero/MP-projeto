@@ -7,38 +7,28 @@ from Usuario import Usuario
 
 import mysql.connector
 
-class UsuarioDAO:
+conn = ConexaoBD().conectaBD()
+
+class UsuarioDAO():
     def __init__(self):
-        conn = ConexaoBD().conectaBD()
-        
-        self.conexao = conn.conectaBD()
+        self.conn = conn
 
     def adicionarUsuario(self, usuario):
+        id_usuario = usuario.getId_usuario()
+        nome_usuario = usuario.getNome_usuario()
+        funcao = usuario.getFuncao()
+        login = usuario.getLogin()
+        senha = usuario.getSenha()
         
-        if self.conexao:
-            sql = 'INSERT INTO usuarios (nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s)'
+        sql = 'INSERT INTO usuarios (id_usuario, nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s, %s)'
 
-            try:
-                cursor = self.conexao.cursor()
+        try:
+            ConexaoBD().executaDML(sql)
+            print('Entrou')
 
-                cursor.execute(sql, (
-                    usuario.get_nome_usuario(),
-                    usuario.get_funcao(),
-                    usuario.get_login(),
-                    usuario.get_senha()
-                ))
+        except mysql.connector.Error as error:
+            print(f'UsuarioDAO Adicionar Usuário: {erro}')
+    
 
-                self.conexao.commit()
-                print('Usuário adicionado com sucesso!')
 
-            except mysql.connector.Error as erro:
-                print(f'Erro ao adicionar usuário: {erro}')
-
-        else:
-            print('Conexão não estabelecida. Não foi possível adicionar o usuário.')
-
-usuario_dao = UsuarioDAO()
-
-# Criando um objeto Usuário para adicionar
-usuario_novo = Usuario('Marcelo Vitor', 'Admin', 'marcelovitor@gmail.com', '123')
-usuario_dao.adicionarUsuario(usuario_novo)
+print(ConexaoBD().executaDQL('SELECT * FROM usuarios'))

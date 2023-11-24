@@ -27,10 +27,11 @@ class ConexaoBD():
 
             self.cursor = self.conn.cursor()
 
-            print('Ok')
-
         except mysql.connector.Error as erro:
-            print(erro)
+            print(f'ConexãoBD Conecta BD: {erro}')
+
+        finally:
+            self.desconectaBD()
 
     def desconectaBD(self):
         self.conn.close()
@@ -43,20 +44,20 @@ class ConexaoBD():
 
             return result
 
-            self.desconectaBD()
-
         except mysql.connector.Error as erro:
-            print(erro)
+            print(f'ConexãoBD Executa DQL: {erro}')
+
+        finally:
+            self.desconectaBD()
     
     def executaDML(self, sql):
         try:
             self.conectaBD()
             self.cursor.execute(sql)
             result = self.cursor.commit()
-
-            return result
-
-            self.desconectaBD()
-
+        
         except mysql.connector.Error as erro:
-            print(erro)
+            print(f'ConexãoBD Executa DML: {erro}')
+
+        finally:
+            self.desconectaBD()
