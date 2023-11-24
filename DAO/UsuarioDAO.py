@@ -29,11 +29,35 @@ class UsuarioDAO():
             print('Usuário adicionado com sucesso!')
 
         except mysql.connector.Error as erro:
-            print(f'UsuarioDAO Adicionar Usuário: {erro}')
+            print(f'UsuarioDAO - Adicionar Usuário: {erro}')
 
         finally:
             cursor.close()
             conexao.desconectaBD()
 
-usuario_teste = Usuario(2, 'Marcelo', 'Cliente', 'marcelo@gmail.com','123')
-UsuarioDAO().adicionarUsuario(usuario_teste)
+    def pesquisarUsuarios(self):
+        conexao = ConexaoBD()
+        conexao.conectaBD()
+
+        try:
+            conn = conexao.conn #Obtém a conexão
+            cursor = conn.cursor()
+
+            sql = 'SELECT * FROM usuarios'
+
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+
+            for linha in resultado:
+                print(linha)
+
+            print('Usuários listados com sucesso!')
+
+        except mysql.connector.Error as erro:
+            print(f'UsuarioDAO - Pesquisar Usuários: {erro}')
+
+        finally:
+            cursor.close()
+            conexao.desconectaBD()
+
+print(UsuarioDAO().pesquisarUsuarios())
