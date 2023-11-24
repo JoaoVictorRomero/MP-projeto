@@ -36,19 +36,27 @@ class ConexaoBD():
         self.conn.close()
 
     def executaDQL(self, sql):
-        self.conectaBD()
-        self.cursor.execute(sql)
-        result = self.cursor.fetchall()
+        try:
+            self.conectaBD()
+            self.cursor.execute(sql)
+            result = self.cursor.fetchall()
 
-        self.desconectaBD()
+            return result
 
-        return result
+            self.desconectaBD()
+
+        except mysql.connector.Error as erro:
+            print(erro)
     
     def executaDML(self, sql):
-        self.conectaBD()
-        self.cursor.execute(sql)
-        result = self.cursor.commit()
+        try:
+            self.conectaBD()
+            self.cursor.execute(sql)
+            result = self.cursor.commit()
 
-        self.desconectaBD()
+            return result
 
-        return result
+            self.desconectaBD()
+
+        except mysql.connector.Error as erro:
+            print(erro)
