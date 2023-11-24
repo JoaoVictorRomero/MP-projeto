@@ -100,5 +100,25 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconectaBD()
 
-usuario = Usuario(1, 'Marcelo', 'Ad', 'marcelo', '123')
-UsuarioDAO().atualizarUsuario(usuario)
+    def deletarUsuario(self, id_usuario):
+        conexao = ConexaoBD()
+        conexao.conectaBD()
+
+        try:
+            conn = conexao.conn #Obtém a conexão com o BD
+            cursor = conn.cursor()
+
+            sql = 'DELETE FROM usuarios WHERE id_usuario = %s'
+
+            cursor.execute(sql, (id_usuario,))
+            conn.commit()
+            print('Usuário excluído com sucesso!')
+
+        except mysql.connector.Error as erro:
+            print(f'UsuarioDAO - Deletar Usuário: {erro}')
+
+        finally:
+            cursor.close()
+            conexao.desconectaBD()
+
+UsuarioDAO().deletarUsuario(2)
