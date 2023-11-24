@@ -13,7 +13,8 @@ class ConexaoBD():
         self.password = password
         self.port = port
         self.database = database
-        self.conn = self.conectaBD()
+        self.conn = None
+        self.cursor = None
     
     def conectaBD(self):
         try:
@@ -28,15 +29,16 @@ class ConexaoBD():
             self.cursor = self.conn.cursor()
 
         except mysql.connector.Error as erro:
-            print(f'ConexãoBD Conecta BD: {erro}')
-
-        finally:
-            self.desconectaBD()
+            print(f'ConexãoBD - Conecta BD: {erro}')
 
     def desconectaBD(self):
-        self.conn.close()
+        if self.conn.is_connected():
+            if self.cursor:
+                self.cursor.close()
 
-    def executaDQL(self, sql):
+            self.conn.close()
+
+    '''def executaDQL(self, sql):
         try:
             self.conectaBD()
             self.cursor.execute(sql)
@@ -60,4 +62,4 @@ class ConexaoBD():
             print(f'ConexãoBD Executa DML: {erro}')
 
         finally:
-            self.desconectaBD()
+            self.desconectaBD()'''

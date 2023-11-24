@@ -7,28 +7,33 @@ from Usuario import Usuario
 
 import mysql.connector
 
-conn = ConexaoBD().conectaBD()
-
 class UsuarioDAO():
-    def __init__(self):
-        self.conn = conn
-
     def adicionarUsuario(self, usuario):
-        id_usuario = usuario.getId_usuario()
-        nome_usuario = usuario.getNome_usuario()
-        funcao = usuario.getFuncao()
-        login = usuario.getLogin()
-        senha = usuario.getSenha()
-        
-        sql = 'INSERT INTO usuarios (id_usuario, nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s, %s)'
+        conexao = ConexaoBD()
+        conexao.conectaBD()
 
         try:
-            ConexaoBD().executaDML(sql)
-            print('Entrou')
+            conn = conexao.conn #Obtém a conexão
+            cursor = conn.cursor()
 
-        except mysql.connector.Error as error:
+            id_usuario = usuario.getId_usuario()
+            nome_usuario = usuario.getNome_usuario()
+            funcao = usuario.getFuncao()
+            login = usuario.getLogin()
+            senha = usuario.getSenha()
+            
+            sql = 'INSERT INTO usuarios (id_usuario, nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s, %s)'
+
+            cursor.execute(sql, (id_usuario, nome_usuario, funcao, login, senha))
+            conn.commit()
+            print('Usuário adicionado com sucesso!')
+
+        except mysql.connector.Error as erro:
             print(f'UsuarioDAO Adicionar Usuário: {erro}')
-    
 
+        finally:
+            cursor.close()
+            conexao.desconectaBD()
 
-print(ConexaoBD().executaDQL('SELECT * FROM usuarios'))
+usuario_teste = Usuario(2, 'Marcelo', 'Cliente', 'marcelo@gmail.com','123')
+UsuarioDAO().adicionarUsuario(usuario_teste)
