@@ -87,17 +87,18 @@ class UsuarioDAO():
             login = usuario.getLogin()
             senha = usuario.getSenha()
             
-            sql = 'INSERT INTO usuarios (id_usuario, nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s, %s)'
+            sql = 'UPDATE usuarios SET nome_usuario = %s, funcao = %s, login = %s, senha = %s WHERE id_usuario = %s'
 
-            cursor.execute(sql, (id_usuario, nome_usuario, funcao, login, senha))
+            cursor.execute(sql, (nome_usuario, funcao, login, senha, id_usuario))
             conn.commit()
-            print('Usuário adicionado com sucesso!')
+            print('Usuário atualizado com sucesso!')
 
         except mysql.connector.Error as erro:
-            print(f'UsuarioDAO - Adicionar Usuário: {erro}')
+            print(f'UsuarioDAO - Atualizar Usuário: {erro}')
 
         finally:
             cursor.close()
             conexao.desconectaBD()
 
-print(UsuarioDAO().pesquisarUsuarios())
+usuario = Usuario(1, 'Marcelo', 'Ad', 'marcelo', '123')
+UsuarioDAO().atualizarUsuario(usuario)
