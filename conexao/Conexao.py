@@ -7,30 +7,19 @@ port = '25060'
 database = 'defaultdb'
 
 class Conexao:
-    def __init__(self, host, user, password, port, database):
+    def __init__(self):
         self.host = host
         self.user = user
         self.password = password
         self.port = port
         self.database = database
-        self.conn = None
-
-    def getConexao(self):
-        try:
-            self.conn= mysql.connector.connect(
-                host = self.host,
-                user = self.user,
-                password = self.password,
-                port = self.port,
-                database = self.database
-            )
-
-            if self.conn.is_connected():
-                print("Conexão ao MySQL realizada com sucesso!")
-                self.cursor = self.conn.cursor()
-        
-        except mysql.connector.Error as erro:
-            print(f"Erro ao conectar ao MySQL: {erro}")
-
-        self.cursor.close()
-        self.conn.close()
+        self.conn = self.getConexao()
+    
+    def getConexao():
+        return mysql.connector.connect(
+            host=self.host,
+            user=self.user,
+            password=self.password,
+            port=self.port,
+            database=self.database
+        )
