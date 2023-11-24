@@ -120,5 +120,3 @@ class UsuarioDAO():
         finally:
             cursor.close()
             conexao.desconectaBD()
-
-UsuarioDAO().deletarUsuario(2)
