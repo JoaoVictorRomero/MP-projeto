@@ -2,14 +2,14 @@ import sys
 sys.path.append('./conexao')
 sys.path.append('./DTO')
 
-from Conexao import Conexao
+from ConexaoBD import ConexaoBD
 from Usuario import Usuario
 
 import mysql.connector
 
 class UsuarioDAO:
     def __init__(self):
-        conn = Conexao(
+        conn = ConexaoBD(
             host='banco-de-dados-mp-do-user-15247043-0.c.db.ondigitalocean.com',
             user='doadmin',
             password='AVNS_erI8p2wSSm0gckO83UU',
@@ -17,18 +17,17 @@ class UsuarioDAO:
             database='defaultdb'
         )
         
-        self.conexao = conn.getConexao()
+        self.conexao = conn.conectaBD()
 
     def adicionarUsuario(self, usuario):
         
         if self.conexao:
-            sql = 'INSERT INTO usuarios (id_usuario, nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s, %s)'
+            sql = 'INSERT INTO usuarios (nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s)'
 
             try:
                 cursor = self.conexao.cursor()
 
                 cursor.execute(sql, (
-                    usuario.get_id_usuario(),
                     usuario.get_nome_usuario(),
                     usuario.get_funcao(),
                     usuario.get_login(),
@@ -47,5 +46,5 @@ class UsuarioDAO:
 usuario_dao = UsuarioDAO()
 
 # Criando um objeto Usuário para adicionar
-usuario_novo = Usuario(1, 'Marcelo Vitor', 'Admin', 'marcelovitor@gmail.com', '123')
+usuario_novo = Usuario('Marcelo Vitor', 'Admin', 'marcelovitor@gmail.com', '123')
 usuario_dao.adicionarUsuario(usuario_novo)
