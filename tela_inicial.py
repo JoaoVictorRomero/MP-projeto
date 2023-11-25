@@ -1,15 +1,28 @@
 import PySimpleGUI as sg
+from menu_de_busca import CRIAR_MENU
 
-menu_layout = [[sg.Text('O que vamos comer hoje?',font=('Arial',30,'bold'))],
-               [sg.Input(key='-INPUT-')],
-               [sg.Button('Buscar'),sg.Button('Não quero comer nada')]]
+background_image = r"E:\@Meus Documentos\Downloads\background_4.png"
 
-menu_principal = sg.Window('Food Finder',menu_layout,finalize=True)
-menu_principal.Maximize()
+# Set the theme
+sg.theme('Dark Blue 14')
 
+# Create the main layout
+main_layout = [
+    [sg.Image(filename=background_image,size=(15000,8000))],
+]
+
+# Create the main window
+main = sg.Window("Food Finder", main_layout,finalize=True)
+main.Maximize()
+CRIAR_MENU()
+
+# Event loop
 while True:
-    event,values = menu_principal.read()
-    if event==sg.WINDOW_CLOSED or event=='Não quero comer nada':
+    event, values = main.read()
+
+    # Check if the window was closed
+    if event == sg.WINDOW_CLOSED:
         break
 
-menu_principal.close()
+# Close the window
+main.close()
