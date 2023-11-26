@@ -7,9 +7,9 @@ def criar_menu():
     menu_layout = [
                 [sg.Button(key="-SAIR-",button_color=("#cd2323",sg.theme_background_color),size=(3,3),button_text="Sair",font=("Arial",30,'bold'),border_width=0),
                 sg.Button(button_color=('#00d027', sg.theme_background_color), border_width=0,size=(10,3),button_text="Buscar",font=("Arial",35), key='-BUSCAR-'),\
-                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Prato do dia",font=("Arial",35), key='-PRATO_DO_DIA-'),\
-                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Mapa",font=("Arial",35), key='-MAPA-'),sg.Text(''),
-                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Login",font=("Arial",30), key='-LOGIN-')],
+                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Pratos do dia",font=("Arial",35,'bold'), key='-PRATO_DO_DIA-'),\
+                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Mapa",font=("Arial",35,'bold'), key='-MAPA-'),sg.Text(''),
+                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Login",font=("Arial",30,'bold'), key='-LOGIN-')],
                 [sg.Image(filename=logo_path, enable_events=True)],
                 [sg.Text('Qual sua fome hoje?',font=('Arial',30,'bold'),
                          justification='center')],
