@@ -1,5 +1,3 @@
-# test_menu_de_busca.py
-
-import pytest
-from menu_de_busca import TEST_CRIAR_MENU
-assert TEST_CRIAR_MENU()==0
+"""Módulo que contém os casos de testes"""
+from menu_de_busca import test_criar_menu
+assert test_criar_menu()==0
