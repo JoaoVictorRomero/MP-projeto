@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 def CRIAR_MENU():    
     sg.theme('dark blue 14')
-    logo_path = "E:\@Meus Documentos\Downloads\logo_fundo.png"
+    logo_path = "assets\logo_fundo.png"
     menu_layout = [[sg.Image(filename=logo_path, enable_events=True)],
                 [sg.Text('O que vamos comer hoje?',font=('Arial',30,'bold'),justification='center')],
                 [sg.Input(key='-INPUT-')],
