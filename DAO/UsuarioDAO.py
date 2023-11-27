@@ -1,10 +1,6 @@
-import sys
 from conexao.ConexaoBD import ConexaoBD
 from DTO.Usuario import Usuario
 import mysql.connector
-
-sys.path.append('./conexao')
-sys.path.append('./DTO')
 
 
 class UsuarioDAO():
