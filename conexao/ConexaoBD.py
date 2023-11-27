@@ -6,7 +6,7 @@ password = 'AVNS_erI8p2wSSm0gckO83UU'
 port = '25060'
 database = 'defaultdb'
 
-class conexao_bd():
+class ConexaoBD():
     def __init__(self):
         self.host = host
         self.user = user
