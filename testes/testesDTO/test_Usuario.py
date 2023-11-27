@@ -1,6 +1,6 @@
 from DTO.Usuario import Usuario
 
-# Teste para verificar se a inicialização do usuário está funcionando corretamente
+# Teste para verificar se a criação do usuário está funcionando corretamente
 def test_criacao_usuario():
     usuario = Usuario(1, 'João', 'Admin', 'joao@example.com', 'senha123')
     assert usuario.getId_usuario() == 1

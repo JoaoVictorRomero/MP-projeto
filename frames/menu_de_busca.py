@@ -26,7 +26,7 @@ def criar_menu():
         if event==sg.WINDOW_CLOSED or event=='Não quero comer nada' or event=="-SAIR-":
             break
         if event=="-SAIR-":
-            for window in sg.window_list():
+            for window in sg.windowlist():
                 sg.Window(window).close()
 
     menu_busca.close()
