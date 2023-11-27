@@ -19,7 +19,6 @@ def test_desconecta_bd_sucesso():
     assert resultado is True  # Verifica se a desconexão foi bem-sucedida
 
 def test_desconecta_bd_falha():
-    # Simula uma desconexão falha ao fechar a conexão antes de estabelecer
     conexao = ConexaoBD()
     resultado = conexao.desconecta_bd()
-    assert resultado is False  # Verifica se a desconexão falhou
+    assert resultado is False #Deveria falhar ao desconectar sem uma conexão estabelecida

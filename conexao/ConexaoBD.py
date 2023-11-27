@@ -37,7 +37,7 @@ class ConexaoBD():
 
     def desconecta_bd(self):
         try:
-            if self.conn.is_connected():
+            if self.conn and self.conn.is_connected():
                 if self.cursor:
                     self.cursor.close()
 
