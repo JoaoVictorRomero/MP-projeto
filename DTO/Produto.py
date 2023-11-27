@@ -24,4 +24,5 @@ class Produto():
 
     
     def __str__(self):
-        return f'ID do Produto: {self.id_produto}\nNome do Produto: {self.nome_produto}\nID do Restaurante {self.fk_id_restaurante}'
+        return f'ID do Produto: {self.id_produto}, Nome do Produto: {self.nome_produto}, ID do Restaurante {self.fk_id_restaurante}'
+        
