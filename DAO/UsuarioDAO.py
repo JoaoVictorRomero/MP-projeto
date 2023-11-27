@@ -1,3 +1,7 @@
+import sys
+sys.path.append('/.conexao')
+sys.path.append('/.DTO')
+
 from conexao.ConexaoBD import ConexaoBD
 from DTO.Usuario import Usuario
 import mysql.connector
@@ -124,6 +128,33 @@ class UsuarioDAO():
             print(f'UsuarioDAO - Deletar Usuário: {erro}')
 
             return False
+
+        finally:
+            cursor.close()
+            conexao.desconecta_bd()
+
+    def login_usuario(self):
+        conexao = ConexaoBD()
+        conexao.conecta_bd()
+
+        listaUsuarios = list()
+
+        try:
+            conn = conexao.conn #Obtém a conexão com o BD
+            cursor = conn.cursor()
+
+            sql = 'SELECT id_usuario FROM usuarios WHERE login = %s AND senha = %s'
+
+            cursor.execute(sql)
+            id_usuario = cursor.fetchall()
+
+            print('Usuários listados com sucesso!')
+            
+            return id_usuario
+
+        except mysql.connector.Error as erro:
+            print(f'UsuarioDAO - Pesquisar Usuários: {erro}')
+            return -1
 
         finally:
             cursor.close()

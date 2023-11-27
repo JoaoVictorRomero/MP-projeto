@@ -25,6 +25,6 @@ def criar_tela_mapa():
         if event==sg.WINDOW_CLOSED or event=='Não quero comer nada' or event=="-SAIR-":
             break
         if event=="-SAIR-":
-            for window in sg.window_list():
+            for window in list(sg.Window):
                 sg.Window(window).close()
     tela_mapa.close()

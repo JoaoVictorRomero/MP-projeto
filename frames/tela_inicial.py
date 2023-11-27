@@ -39,11 +39,11 @@ while True:
         break
     if event == "-BUSCAR-":
         criar_menu()
-    if event=='-PRATO_DO_DIA-':
+    if event =='-PRATO_DO_DIA-':
         criar_tela_pratos()
-    if event=='-MAPA-':
+    if event =='-MAPA-':
         criar_tela_mapa()
-    if event=='-LOGIN-':
+    if event =='-LOGIN-':
         criar_login()
 
 # Close the window

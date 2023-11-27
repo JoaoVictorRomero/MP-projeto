@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+
 sg.theme('dark blue 14')
 logo_path = r"assets\logo_fundo.png"
 def criar_login():
@@ -10,9 +11,9 @@ def criar_login():
                 sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Mapa",font=("Arial",35,'bold'), key='-MAPA-'),sg.Text(''),
                 sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('gray', sg.theme_background_color), border_width=0,size=(10,3),button_text="Login",font=("Arial",30,'bold'), key='-LOGIN-')],
                 [sg.Image(filename=logo_path, enable_events=True)],
-                [sg.Text('Nome de usuário',font=('Arial',20,'bold'),
+                [sg.Text('Login',font=('Arial',20,'bold'),
                          justification='center')],
-                [sg.Input(key='-USERNAME-')],
+                [sg.Input(key='-LOGIN_USUARIO-')],
                 [sg.Text('Senha',font=('Arial',20,'bold'),
                 justification='center')],
                 [sg.Input(key='-PASSWORD-',password_char='*')],
@@ -26,9 +27,8 @@ def criar_login():
         event,values = menu_login.read()
         if event==sg.WINDOW_CLOSED or event=='Não quero comer nada' or event=="-SAIR-":
             break
+
         if event=="-SAIR-":
-            for window in sg.window_list():
+            for window in list(sg.Window):
                 sg.Window(window).close()
-
-
-
+                
