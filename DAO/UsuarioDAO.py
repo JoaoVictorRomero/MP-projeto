@@ -1,14 +1,14 @@
 import sys
-sys.path.append('/.conexao')
-sys.path.append('/.DTO')
+sys.path.append('conexao')
+sys.path.append('DTO')
 
-from conexao.ConexaoBD import ConexaoBD
-from DTO.Usuario import Usuario
+from ConexaoBD import ConexaoBD
+from Usuario import Usuario
 import mysql.connector
 
 
 class UsuarioDAO():
-    def adicionar_usuario(self, usuario):
+    def adicionar_usuario(self, usuario: Usuario):
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -77,7 +77,7 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def atualizar_usuario(self, usuario):
+    def atualizar_usuario(self, usuario: Usuario):
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -133,11 +133,10 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def login_usuario(self):
+    def login_usuario(self, login, senha):
         conexao = ConexaoBD()
         conexao.conecta_bd()
-
-        listaUsuarios = list()
+        usuario_id = -1
 
         try:
             conn = conexao.conn #Obtém a conexão com o BD
@@ -145,17 +144,16 @@ class UsuarioDAO():
 
             sql = 'SELECT id_usuario FROM usuarios WHERE login = %s AND senha = %s'
 
-            cursor.execute(sql)
-            id_usuario = cursor.fetchall()
+            cursor.execute(sql, login, senha)
+            usuario_id = cursor.fetchall()
 
-            print('Usuários listados com sucesso!')
-            
-            return id_usuario
+            print('Usuários listados com sucesso!')            
 
         except mysql.connector.Error as erro:
             print(f'UsuarioDAO - Pesquisar Usuários: {erro}')
-            return -1
 
         finally:
             cursor.close()
             conexao.desconecta_bd()
+
+        return usuario_id

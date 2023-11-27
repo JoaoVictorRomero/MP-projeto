@@ -27,3 +27,10 @@ def test_deletar_usuario():
     id_usuario = 1  # Defina o ID do usuário a ser excluído
     resultado = usuario_dao.deletar_usuario(id_usuario)
     assert resultado is True
+
+def test_login_usuario():
+    usuario_dao = UsuarioDAO()
+    login = 'teste'
+    senha = '123'
+    resultado = usuario_dao.login_usuario(login, senha)
+    assert resultado == 4
