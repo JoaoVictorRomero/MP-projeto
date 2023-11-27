@@ -1,16 +1,16 @@
 import sys
+from conexao.ConexaoBD import ConexaoBD
+from DTO.Usuario import Usuario
+import mysql.connector
+
 sys.path.append('./conexao')
 sys.path.append('./DTO')
 
-from ConexaoBD import ConexaoBD
-from Usuario import Usuario
-
-import mysql.connector
 
 class UsuarioDAO():
-    def adicionarUsuario(self, usuario):
+    def adicionar_usuario(self, usuario):
         conexao = ConexaoBD()
-        conexao.conectaBD()
+        conexao.conecta_bd()
 
         try:
             conn = conexao.conn #Obtém a conexão com o BD
@@ -28,16 +28,20 @@ class UsuarioDAO():
             conn.commit()
             print('Usuário adicionado com sucesso!')
 
+            return True
+
         except mysql.connector.Error as erro:
             print(f'UsuarioDAO - Adicionar Usuário: {erro}')
 
+            return False
+
         finally:
             cursor.close()
-            conexao.desconectaBD()
+            conexao.desconecta_bd()
 
-    def pesquisarUsuarios(self):
+    def pesquisar_usuarios(self):
         conexao = ConexaoBD()
-        conexao.conectaBD()
+        conexao.conecta_bd()
 
         listaUsuarios = list()
 
@@ -71,11 +75,11 @@ class UsuarioDAO():
 
         finally:
             cursor.close()
-            conexao.desconectaBD()
+            conexao.desconecta_bd()
 
-    def atualizarUsuario(self, usuario):
+    def atualizar_usuario(self, usuario):
         conexao = ConexaoBD()
-        conexao.conectaBD()
+        conexao.conecta_bd()
 
         try:
             conn = conexao.conn #Obtém a conexão com o BD
@@ -93,16 +97,20 @@ class UsuarioDAO():
             conn.commit()
             print('Usuário atualizado com sucesso!')
 
+            return True
+
         except mysql.connector.Error as erro:
             print(f'UsuarioDAO - Atualizar Usuário: {erro}')
 
+            return False
+
         finally:
             cursor.close()
-            conexao.desconectaBD()
+            conexao.desconecta_bd()
 
-    def deletarUsuario(self, id_usuario):
+    def deletar_usuario(self, id_usuario):
         conexao = ConexaoBD()
-        conexao.conectaBD()
+        conexao.conecta_bd()
 
         try:
             conn = conexao.conn #Obtém a conexão com o BD
@@ -114,9 +122,13 @@ class UsuarioDAO():
             conn.commit()
             print('Usuário excluído com sucesso!')
 
+            return True
+
         except mysql.connector.Error as erro:
             print(f'UsuarioDAO - Deletar Usuário: {erro}')
 
+            return False
+
         finally:
             cursor.close()
-            conexao.desconectaBD()
+            conexao.desconecta_bd()
