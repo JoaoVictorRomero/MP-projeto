@@ -3,6 +3,7 @@ from menu_de_busca import criar_menu
 from menu_de_busca import logo_path
 from menu_pratos_do_dia import criar_tela_pratos
 from menu_mapa import criar_tela_mapa
+from menu_login import criar_login
 
 background_image = r"assets\background_4.png"
 logo_big_path = r"assets\logo_big.png"
@@ -42,6 +43,8 @@ while True:
         criar_tela_pratos()
     if event=='-MAPA-':
         criar_tela_mapa()
+    if event=='-LOGIN-':
+        criar_login()
 
 # Close the window
 main.close()

@@ -6,14 +6,13 @@ def criar_tela_pratos():
     """Função que leva a criação do menu de busca"""
     tela_pratos_do_dia_layout = [
                 [sg.Button(key="-SAIR-",button_color=("#cd2323",sg.theme_background_color),size=(3,3),button_text="Sair",font=("Arial",30,'bold'),border_width=0),
-                sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Buscar",font=("Arial",35), key='-BUSCAR-'),\
-                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('#00d027', sg.theme_background_color), border_width=0,size=(10,3),button_text="Prato do dia",font=("Arial",35), key='-PRATO_DO_DIA-'),\
-                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Mapa",font=("Arial",35), key='-MAPA-'),sg.Text(''),
-                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('gray', sg.theme_background_color), border_width=0,size=(10,3),button_text="Login",font=("Arial",30), key='-LOGIN-')],
+                sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Buscar",font=("Arial",35,'bold'), key='-BUSCAR-'),\
+                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('#00d027', sg.theme_background_color), border_width=0,size=(10,3),button_text="Pratos do dia",font=("Arial",35,'bold'), key='-PRATO_DO_DIA-'),\
+                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('white', sg.theme_background_color), border_width=0,size=(10,3),button_text="Mapa",font=("Arial",35,'bold'), key='-MAPA-'),sg.Text(''),
+                sg.Text('|',font=("Arial",30,'bold')), sg.Button(button_color=('gray', sg.theme_background_color), border_width=0,size=(10,3),button_text="Login",font=("Arial",30,'bold'), key='-LOGIN-')],
                 [sg.Image(filename=logo_path, enable_events=True)],
-                [sg.Text('Qual sua fome hoje?',font=('Arial',30,'bold'),
+                [sg.Text('Essas são as recomendações do dia!',font=('Arial',30,'bold'),
                          justification='center')],
-                [sg.Input(key='-INPUT-')],
                 [sg.Button(button_text="Buscar",font=("Arial",30,'bold'),button_color=('#23cd4b', sg.theme_background_color),border_width=0),
                  sg.Button(button_text="Não quero comer nada",font=("Arial",20,'bold'),button_color=('#cd2323', sg.theme_background_color),border_width=0)]]
 
