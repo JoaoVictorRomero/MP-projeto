@@ -1,10 +1,2 @@
 #Diretório de conexão
 /conexao
-
-#Arquivos de cache
-__pycache__
-.pytest_cache
-
-#Arquivos de cache
-/DAO/__pycache__
-/DTO/__pycache__
