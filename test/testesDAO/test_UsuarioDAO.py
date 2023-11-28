@@ -40,7 +40,7 @@ def test_login_usuario_valido():
 def test_login_usuario_invalido():
     usuario_dao = UsuarioDAO()
     login = 'usuario_invalido'
-    senha = 'senha_ivalida'
+    senha = 'senha_invalida'
 
     usuario_autenticado = usuario_dao.login_usuario(login, senha)
 

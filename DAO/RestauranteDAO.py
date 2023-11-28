@@ -3,7 +3,9 @@ from DTO.Restaurante import Restaurante
 import mysql.connector
 
 class RestauranteDAO():
+    '''Classe que define um Restaurante do BD'''
     def adicionar_restaurante(self, restaurante):
+        '''Função que adiciona um restaurante ao BD'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -33,6 +35,7 @@ class RestauranteDAO():
             conexao.desconecta_bd()
 
     def pesquisar_restaurantes(self) -> list:
+            '''Função que retorna todos os restaurantes do BD'''
             conexao = ConexaoBD()
             conexao.conecta_bd()
 
@@ -67,6 +70,7 @@ class RestauranteDAO():
                 conexao.desconecta_bd()
 
     def atualizar_restaurante(self, restaurante: Restaurante) -> bool:
+        '''Função que atualiza um restaurante do BD com base no seu id'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -96,6 +100,7 @@ class RestauranteDAO():
             conexao.desconecta_bd()
 
     def deletar_restaurante(self, id_restaurante: int) -> bool:
+        '''Função que remove um restaurante do BD com base no seu id'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 

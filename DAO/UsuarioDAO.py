@@ -5,7 +5,9 @@ import mysql.connector
 
 
 class UsuarioDAO():
+    '''Classe que define um Usuário do BD'''
     def adicionar_usuario(self, usuario: Usuario) -> bool:
+        '''Função que adiciona um usuário ao BD'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -37,6 +39,7 @@ class UsuarioDAO():
             conexao.desconecta_bd()
 
     def pesquisar_usuarios(self) -> list:
+        '''Função que retorna todos os usuário do BD'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -71,6 +74,7 @@ class UsuarioDAO():
             conexao.desconecta_bd()
 
     def atualizar_usuario(self, usuario: Usuario) -> bool:
+        '''Função que atualiza um usuário do BD com base no seu id'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -102,6 +106,7 @@ class UsuarioDAO():
             conexao.desconecta_bd()
 
     def deletar_usuario(self, id_usuario: int) -> bool:
+        '''Função que remove um usuário do BD com base no seu id'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -127,6 +132,7 @@ class UsuarioDAO():
             conexao.desconecta_bd()
 
     def login_usuario(self, login: str, senha: str) -> Usuario:
+        '''Função que verifica as credenciais de um usuário do BD com base no seu login e senha'''
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
