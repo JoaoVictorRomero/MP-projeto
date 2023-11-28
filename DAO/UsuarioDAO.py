@@ -108,7 +108,7 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def deletar_usuario(self, id_usuario):
+    def deletar_usuario(self, id_usuario: int):
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -133,27 +133,39 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def login_usuario(self, login, senha):
+    def login_usuario(self, login: str, senha: str):
         conexao = ConexaoBD()
         conexao.conecta_bd()
-        usuario_id = -1
 
         try:
             conn = conexao.conn #Obtém a conexão com o BD
             cursor = conn.cursor()
 
-            sql = 'SELECT id_usuario FROM usuarios WHERE login = %s AND senha = %s'
+            sql = 'SELECT * FROM usuarios WHERE login = %s AND senha = %s'
 
-            cursor.execute(sql, login, senha)
-            usuario_id = cursor.fetchall()
+            cursor.execute(sql, (login, senha))
+            resultado = cursor.fetchone()
 
-            print('Usuários listados com sucesso!')            
+            if resultado:
+                id_usuario, nome_usuario, funcao, login_usuario, senha_usuario = result
+
+                usuario = Usuario(id_usuario, nome_usuario, funcao, login_usuario, senha_usuario)
+
+                print('Login realizado com sucesso!')
+
+                return usuario
+
+            else:
+                print('Login ou senha inválidos!')
+
+                return None
 
         except mysql.connector.Error as erro:
             print(f'UsuarioDAO - Pesquisar Usuários: {erro}')
 
+            return None
+
         finally:
             cursor.close()
             conexao.desconecta_bd()
-
-        return usuario_id
+            

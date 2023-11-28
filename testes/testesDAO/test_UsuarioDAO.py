@@ -30,7 +30,9 @@ def test_deletar_usuario():
 
 def test_login_usuario():
     usuario_dao = UsuarioDAO()
-    login = 'teste'
-    senha = '123'
-    resultado = usuario_dao.login_usuario(login, senha)
-    assert resultado == 4
+    login = 'login_teste'
+    senha = 'senha_teste'
+
+    usuario_autenticado = usuario_dao.login_usuario(login, senha)
+
+    assert usuario_autenticado is not None
