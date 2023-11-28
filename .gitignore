@@ -1,2 +1,6 @@
 #Diretório de conexão
 /conexao
+
+#Arquivos de cache
+__pycache__
+.pytest_cache
