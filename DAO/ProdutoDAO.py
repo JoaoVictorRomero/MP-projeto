@@ -1,6 +1,6 @@
-from conexao.ConexaoBD import ConexaoBD
-from DTO.Produto import Produto
 import mysql.connector
+from conexao.ConexaoBD import ConexaoBD
+from Produto import Produto
 
 class ProdutoDAO():
     '''Classe que define um Produto do BD'''

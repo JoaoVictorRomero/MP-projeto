@@ -1,16 +1,15 @@
-import sys
-sys.path.append('DAO')
-sys.path.append('DTO')
-
 import PySimpleGUI as sg
 from UsuarioDAO import UsuarioDAO
 from Usuario import Usuario
 
 # Layout da janela
 layout = [
-    [sg.Text('Login'), sg.InputText(key='login')],
-    [sg.Text('Senha'), sg.InputText(key='senha')],
-    [sg.Button('Login', key='LOGIN'), sg.Button('Cancelar')]
+    [sg.Text('Login')], 
+    [sg.Input(key='login')],
+    [sg.Text('Senha')], 
+    [sg.Input(key='senha')],
+    [sg.Button('Login', key='-LOGIN-'), 
+     sg.Button('Cancelar')]
 ]
 
 # Criando a janela
@@ -22,13 +21,16 @@ while True:
 
     if event == sg.WIN_CLOSED or event == 'Cancelar':
         break
-    elif event == 'LOGIN':
+    elif event == '-LOGIN-':
         # Obter valores inseridos pelo usuário
         login = values['login']
         senha = values['senha']
 
+        print(login)
+        print(senha)
+
         # Adicionar usuário ao banco de dados usando a função do DAO
-        resultado = UsuarioDAO.login_usuario(login, senha)
+        resultado = UsuarioDAO().login_usuario(login, senha)
         print(resultado)
 
         sg.popup('Usuário adicionado com sucesso!')

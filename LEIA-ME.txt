@@ -1,0 +1,1 @@
+No teminal, digite: 'pip install -r requirements.txt' (sem as aspas) Isso fará com que todas as bibliotecas sejam instaladas.

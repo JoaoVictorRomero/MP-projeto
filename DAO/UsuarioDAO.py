@@ -1,6 +1,6 @@
-from conexao.ConexaoBD import ConexaoBD
-from DTO.Usuario import Usuario
 import mysql.connector
+from ConexaoBD import ConexaoBD
+from Usuario import Usuario
 
 
 
