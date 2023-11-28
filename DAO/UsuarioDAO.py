@@ -1,14 +1,11 @@
-import sys
-sys.path.append('conexao')
-sys.path.append('DTO')
-
-from ConexaoBD import ConexaoBD
-from Usuario import Usuario
+from conexao.ConexaoBD import ConexaoBD
+from DTO.Usuario import Usuario
 import mysql.connector
 
 
+
 class UsuarioDAO():
-    def adicionar_usuario(self, usuario: Usuario):
+    def adicionar_usuario(self, usuario: Usuario) -> bool:
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -16,11 +13,11 @@ class UsuarioDAO():
             conn = conexao.conn #Obtém a conexão com o BD
             cursor = conn.cursor()
 
-            id_usuario = usuario.getId_usuario()
-            nome_usuario = usuario.getNome_usuario()
-            funcao = usuario.getFuncao()
-            login = usuario.getLogin()
-            senha = usuario.getSenha()
+            id_usuario = usuario.get_id_usuario()
+            nome_usuario = usuario.get_nome_usuario()
+            funcao = usuario.get_funcao()
+            login = usuario.get_login()
+            senha = usuario.get_senha()
             
             sql = 'INSERT INTO usuarios (id_usuario, nome_usuario, funcao, login, senha) VALUES (%s, %s, %s, %s, %s)'
 
@@ -39,7 +36,7 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def pesquisar_usuarios(self):
+    def pesquisar_usuarios(self) -> list:
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -55,11 +52,7 @@ class UsuarioDAO():
             resultado = cursor.fetchall()
 
             for linha in resultado:
-                id_usuario = linha[0]
-                nome_usuario = linha[1]
-                funcao = linha[2]
-                login = linha[3]
-                senha = linha[4]
+                id_usuario, nome_usuario, funcao, login, senha = linha
                 
                 usuario = Usuario(id_usuario, nome_usuario, funcao, login, senha)
 
@@ -77,7 +70,7 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def atualizar_usuario(self, usuario: Usuario):
+    def atualizar_usuario(self, usuario: Usuario) -> bool:
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -85,11 +78,11 @@ class UsuarioDAO():
             conn = conexao.conn #Obtém a conexão com o BD
             cursor = conn.cursor()
 
-            id_usuario = usuario.getId_usuario()
-            nome_usuario = usuario.getNome_usuario()
-            funcao = usuario.getFuncao()
-            login = usuario.getLogin()
-            senha = usuario.getSenha()
+            id_usuario = usuario.get_id_usuario()
+            nome_usuario = usuario.get_nome_usuario()
+            funcao = usuario.get_funcao()
+            login = usuario.get_login()
+            senha = usuario.get_senha()
             
             sql = 'UPDATE usuarios SET nome_usuario = %s, funcao = %s, login = %s, senha = %s WHERE id_usuario = %s'
 
@@ -108,7 +101,7 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def deletar_usuario(self, id_usuario: int):
+    def deletar_usuario(self, id_usuario: int) -> bool:
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -133,7 +126,7 @@ class UsuarioDAO():
             cursor.close()
             conexao.desconecta_bd()
 
-    def login_usuario(self, login: str, senha: str):
+    def login_usuario(self, login: str, senha: str) -> Usuario:
         conexao = ConexaoBD()
         conexao.conecta_bd()
 
@@ -147,8 +140,7 @@ class UsuarioDAO():
             resultado = cursor.fetchone()
 
             if resultado:
-                id_usuario, nome_usuario, funcao, login_usuario, senha_usuario = result
-
+                id_usuario, nome_usuario, funcao, login_usuario, senha_usuario = resultado
                 usuario = Usuario(id_usuario, nome_usuario, funcao, login_usuario, senha_usuario)
 
                 print('Login realizado com sucesso!')

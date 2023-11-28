@@ -28,11 +28,20 @@ def test_deletar_usuario():
     resultado = usuario_dao.deletar_usuario(id_usuario)
     assert resultado is True
 
-def test_login_usuario():
+def test_login_usuario_valido():
     usuario_dao = UsuarioDAO()
-    login = 'login_teste'
-    senha = 'senha_teste'
+    login = 'teste@gmail.com'
+    senha = '123'
 
     usuario_autenticado = usuario_dao.login_usuario(login, senha)
 
     assert usuario_autenticado is not None
+
+def test_login_usuario_invalido():
+    usuario_dao = UsuarioDAO()
+    login = 'usuario_invalido'
+    senha = 'senha_ivalida'
+
+    usuario_autenticado = usuario_dao.login_usuario(login, senha)
+
+    assert usuario_autenticado is None
