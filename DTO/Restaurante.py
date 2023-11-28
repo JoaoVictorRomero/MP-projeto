@@ -1,5 +1,5 @@
 class Restaurante():
-    def __init__(self, id_restaurante, nome_restaurante, distancia_totem):
+    def __init__(self, id_restaurante: int, nome_restaurante: str, distancia_totem: float):
         self.id_restaurante = id_restaurante
         self.nome_restaurante = nome_restaurante
         self.distancia_totem = distancia_totem

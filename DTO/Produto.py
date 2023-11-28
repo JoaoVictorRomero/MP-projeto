@@ -1,5 +1,5 @@
 class Produto():
-    def __init__(self, id_produto, nome_produto, fk_id_restaurante):
+    def __init__(self, id_produto: int, nome_produto: str, fk_id_restaurante: int):
         self.id_produto = id_produto
         self.nome_produto = nome_produto
         self.fk_id_restaurante = fk_id_restaurante
