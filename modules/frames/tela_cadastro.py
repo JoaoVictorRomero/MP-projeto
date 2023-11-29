@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
-from Usuario import Usuario
-from UsuarioDAO import UsuarioDAO
+from modules.DTO.Usuario import Usuario
+from modules.DAO.UsuarioDAO import UsuarioDAO
 
 sg.theme('dark blue 14')
 logo_path = r'assets\logo_fundo.png'
