@@ -49,5 +49,5 @@ class Usuario:
 
     def __str__(self):
         '''Função que retorna o usuário no formato "ID Usuário: Nome: Função: Login: "'''
-        return f'ID Usuário: {self.id_usuario}\nNome: {self.nome_usuario}\nFunção: {self.funcao}\nLogin: {self.login}\n'
+        return f'\nID Usuário: {self.id_usuario}\nNome: {self.nome_usuario}\nFunção: {self.funcao}\nLogin: {self.login}\n'
     
