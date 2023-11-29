@@ -1,6 +1,6 @@
-import mysql.connector
 from .Conexao_BD import ConexaoBD
 from .Classe_Restaurante import Restaurante
+import mysql.connector
 
 class RestauranteDAO:
     '''Classe que define um Restaurante do BD'''

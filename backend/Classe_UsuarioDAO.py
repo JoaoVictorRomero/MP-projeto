@@ -1,8 +1,6 @@
-import mysql.connector
 from .Conexao_BD import ConexaoBD
 from .Classe_Usuario import Usuario
-
-
+import mysql.connector
 
 class UsuarioDAO:
     '''Classe que define um Usuário do BD'''
