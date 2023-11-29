@@ -1,6 +1,9 @@
 import PySimpleGUI as sg
 from menu_cadastro import criar_tela_cadastro
-#from UsuarioDAO import UsuarioDAO
+from menu_pratos_do_dia import criar_tela_pratos
+from backend.Classe_UsuarioDAO import UsuarioDAO
+import mysql.connector
+
 
 sg.theme('dark blue 14')
 logo_path = r'assets\logo_fundo.png'
@@ -27,6 +30,7 @@ def criar_login():
     menu_login = sg.Window('Food Finder', login_layout, finalize=True, 
                                element_justification='center')
     menu_login.maximize()
+
     while True:
         event, values = menu_login.read()
         if event==sg.WINDOW_CLOSED or event=='Não quero comer nada' or event=='-SAIR-':
@@ -36,9 +40,18 @@ def criar_login():
             login = values['-LOGIN_USUARIO-']
             senha = values['-PASSWORD-']
             
-            resultado = UsuarioDAO().login_usuario(login, senha)
+            try:
+                resultado = UsuarioDAO().login_usuario(login, senha)
 
-            print(resultado)
+                nome_usuario = resultado.get_nome_usuario()
+
+                sg.popup_ok(f'Olá, {nome_usuario}!')
+
+                criar_tela_pratos()
+
+            except mysql.connector.Error as erro:
+                print(f'Menu Login - Logar Usuário: {erro}')
+
 
         elif event == '-CADASTRAR-':
             criar_tela_cadastro()

@@ -1,6 +1,6 @@
 import mysql.connector
-from ConexaoBD import ConexaoBD
-from Usuario import Usuario
+from .Conexao_BD import ConexaoBD
+from .Classe_Usuario import Usuario
 
 
 
@@ -25,7 +25,6 @@ class UsuarioDAO:
 
             cursor.execute(sql, (id_usuario, nome_usuario, funcao, login, senha))
             conn.commit()
-            print('Usuário adicionado com sucesso!')
 
             return True
 
@@ -60,8 +59,6 @@ class UsuarioDAO:
                 usuario = Usuario(id_usuario, nome_usuario, funcao, login, senha)
 
                 listaUsuarios.append(usuario)
-
-            print('Usuários listados com sucesso!')
             
             return listaUsuarios
 
@@ -92,7 +89,6 @@ class UsuarioDAO:
 
             cursor.execute(sql, (nome_usuario, funcao, login, senha, id_usuario))
             conn.commit()
-            print('Usuário atualizado com sucesso!')
 
             return True
 
@@ -118,7 +114,6 @@ class UsuarioDAO:
 
             cursor.execute(sql, (id_usuario,))
             conn.commit()
-            print('Usuário excluído com sucesso!')
 
             return True
 
@@ -149,13 +144,9 @@ class UsuarioDAO:
                 id_usuario, nome_usuario, funcao, login_usuario, senha_usuario = resultado
                 usuario = Usuario(id_usuario, nome_usuario, funcao, login_usuario, senha_usuario)
 
-                print('Login realizado com sucesso!')
-
                 return usuario
 
             else:
-                print('Login ou senha inválidos!')
-
                 return None
 
         except mysql.connector.Error as erro:

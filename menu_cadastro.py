@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
-'''from DTO.Usuario import Usuario
-from DAO.UsuarioDAO import UsuarioDAO'''
+import mysql.connector
+from backend.Classe_Usuario import Usuario
+from backend.Classe_UsuarioDAO import UsuarioDAO
 
 sg.theme('dark blue 14')
 logo_path = r'assets\logo_fundo.png'
@@ -46,10 +47,14 @@ def criar_tela_cadastro():
             login = values['login']
             senha = values['senha']
 
-            novo_usuario = Usuario(id_usuario, nome_usuario, funcao, login, senha)
-            resultado = UsuarioDAO().adicionar_usuario(novo_usuario)
+            try:
+                novo_usuario = Usuario(id_usuario, nome_usuario, funcao, login, senha)                
+                resultado = UsuarioDAO().adicionar_usuario(novo_usuario)
 
-            print(resultado)
+                sg.popup_ok('Usuário logado com sucesso')
+
+            except mysql.connector.Error as erro:
+                print(f'Menu Cadastro - Cadastrar Usuário: {erro}')
 
         elif event == '-LOGIN-':
             print('login')
