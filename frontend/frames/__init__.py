@@ -1,1 +1,0 @@
-__all__ = ['menu_cadastro', 'menu_de_busca', 'menu_login', 'menu_mapa', 'menu_pratos_do_dia', 'tela_inicial', 'teste_import']

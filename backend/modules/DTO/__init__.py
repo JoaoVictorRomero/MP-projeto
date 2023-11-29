@@ -1,1 +1,0 @@
-__all__ = ['Classe_Pesquisa_Produto', 'Classe_Pesquisa_Restaurante', 'Classe_Produto', 'Classe_Restaurante', 'Classe_Usuario']
