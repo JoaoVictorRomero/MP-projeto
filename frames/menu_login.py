@@ -1,5 +1,4 @@
 import PySimpleGUI as sg
-from tela_teste import criar_teste
 from tela_cadastro import criar_tela_cadastro
 from UsuarioDAO import UsuarioDAO
 

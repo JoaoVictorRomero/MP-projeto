@@ -7,6 +7,9 @@
     "python.analysis.extraPaths": [
         "./DTO",
         "./DAO",
-        "./conexao"
+        "./conexao",
+        "./DTO",
+        "./DTO",
+        "./DTO"
     ]
 }
