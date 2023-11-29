@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 from tela_cadastro import criar_tela_cadastro
-from UsuarioDAO import UsuarioDAO
+#from UsuarioDAO import UsuarioDAO
 
 sg.theme('dark blue 14')
 logo_path = r'assets\logo_fundo.png'
