@@ -3,10 +3,5 @@
         "test"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true,
-    "python.analysis.extraPaths": [
-        "./DTO",
-        "./DAO",
-        "./conexao"
-    ]
+    "python.testing.pytestEnabled": true
 }
