@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #010A26;
+    padding-right: 59px;
+    padding-left: 20px;
+    font-family: 'Inter';
+
+  }
+  
+  .a {
+    font-family: 'Inter';
+    margin-top: 28px;
+    display: flex;
+    font-size: 24px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bolder;
+  }
+  
+  .div_links {
+    display: flex;
+    align-items: start;
+  }
+  
+  
+  .PratosDia {
+    margin-top: 28px;
+    text-decoration: none;
+    font-size: 24px;
+    color: #F2B56B;
+    font-size: 24px;
+    margin-left: 5px;
+    padding-left: 5px;
+    margin-right: 5px;
+    padding-right: 5px;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    font-family: 'Inter';
+    font-weight: bolder;
+
+  }

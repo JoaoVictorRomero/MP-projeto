@@ -1,0 +1,66 @@
+.main {
+  background-color: #010A26;
+  display: flex;
+  justify-content: space-around;
+  height: 780px;
+  align-items: center;
+}
+
+
+.dubloCheedar {
+  background-image: url(/amirali-mirhashemian-sc5sTPMrVfk-unsplash.png);
+  background-repeat: no-repeat;
+  width: 332px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.MAC_CHEESE {
+  background-image: url(/amr-taha-75wOPFZJwxI-unsplash.png);
+  background-repeat: no-repeat;
+  width: 332px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.TORTA_DOCE {
+  background-image: url(/mantra-media-W7b8Sqb7PG8-unsplash.png);
+  background-repeat: no-repeat;
+  width: 332px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.h2 {
+  color: #F2B56B;
+  font-family: 'Inter';
+}
+
+.h1 {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: 'Inter';
+
+}
+
+.button {
+  background-color: #1BF28E;
+  color: #FFFFFF;
+  width: 332px;
+  height: 62px;
+  border-radius: 0px 0px 20px 20px;
+  cursor: pointer;
+  font-family: 'Inter';
+  font-size: 24px;
+  font-weight: bolder;
+}
+
