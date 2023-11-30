@@ -1,7 +1,7 @@
 import sys
-sys.path.append('../backend')
+sys.path.append('./MP-projeto')
 
-from DTO.classe_usuario import Usuario
+from DTO.Classe_Usuario import Usuario
 
 usuario_novo = Usuario(1, 'Teste', 'Função', 'login', 'senha')
 
